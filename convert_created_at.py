@@ -1,5 +1,5 @@
 from mongo_proxy import MongoProxy
-from SETTINGS import collection
+from SETTINGS import collection, database
 import pymongo
 from mongo_credentials import mongo_loc, mongo_port, mongo_auth_db, mongo_auth_pw, mongo_auth_user, mongo_db
 from datetime import datetime as dt
@@ -9,7 +9,7 @@ import pytz
 
 connection = pymongo.MongoClient(mongo_loc, mongo_port)
 # connection[mongo_auth_db].authenticate(mongo_auth_user, mongo_auth_pw, mechanism='SCRAM-SHA-1')
-db = connection[mongo_db][collection]
+db = connection[database][collection]
 
 
 counter = 0
