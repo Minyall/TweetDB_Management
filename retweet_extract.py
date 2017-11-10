@@ -12,5 +12,5 @@ for x in cursor:
         print('Extracted {} of {} Retweets'.format(counter,total))
     # print(type(x['retweeted_status']))
     # print(x['retweeted_status'])
-    connection[database]['retweet_extracts'].update_one({'id': x['id']}, {'$setOnInsert':x['retweeted_status']}, upsert=True)
+    connection[database][collection].update_one({'id': x['id']}, {'$setOnInsert':x['retweeted_status']}, upsert=True)
     counter += 1
