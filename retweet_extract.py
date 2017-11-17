@@ -13,4 +13,6 @@ for x in cursor:
     # print(type(x['retweeted_status']))
     # print(x['retweeted_status'])
     connection[database][collection].update_one({'id': x['id']}, {'$setOnInsert':x['retweeted_status']}, upsert=True)
+    connection[database][collection].update_one({'id': x['id']},
+    {'$max':{'retweet_count':x['retweeted_status']['retweet_count']}})
     counter += 1
